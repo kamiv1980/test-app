@@ -1,24 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
+import {Proforma} from "./components/Proforma";
+import {createTheme, ThemeProvider} from "@mui/material/styles";
+
+
+const lightTheme = createTheme({
+    palette: { mode: 'light' } ,
+});
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <ThemeProvider theme={lightTheme}>
+          <div className="App">
+          <header className="App-header">
+            <h1>Form</h1>
+            <Proforma/>
+          </header>
+        </div>
+      </ThemeProvider>
   );
 }
 
