@@ -50,13 +50,7 @@ export const Proforma = () => {
 
     const  formatOnBlur = (value) => {
         if (!!value) {
-            const array = value.replaceAll(',','').split('.')
-            if (!array[1]){
-                array.push('00')
-            } else if (array[1].length === 1){
-                array[1] = array[1] +'0'
-            }
-            return array.join('.')
+            return Number(value.replaceAll(',','')).toFixed(2)
         }
         return value
     }
@@ -91,15 +85,11 @@ export const Proforma = () => {
         let result
         if (isNaN(Number(val))) {
             result = val.replaceAll(/[^\d.]/ig,"").split('.')
-            result[0]=result[0]+'.'
-            if (!result[1] || result[1].length <=2 ){
-                return result.join('')
-            } else if (!!result[1] && result[1].length > 2) {
-                return result[0] + result[1][0] + result[1][1]
-            }
         }
         if (!!val && val.includes('.')){
             result = val.split('.')
+        }
+        if (!!result){
             result[0]= result[0]+'.'
             if (!result[1] || result[1].length <=2 ){
                 return result.join('')
